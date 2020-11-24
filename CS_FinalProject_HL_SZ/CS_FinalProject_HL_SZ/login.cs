@@ -40,21 +40,18 @@ namespace CS_FinalProject_HL_SZ
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
-            //this.email = emailInput.Text;
-            //this.password = passwordInput.Text;
-            //bool isCorrect = Global.database.LoginUser(email, password);
-            //if (email != "" && password != "" && isCorrect)
-            //{
-            //    this.Hide();
-            //    Global.controlScreen.Show();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Invalid Email or Password, try again");
-            //}
-            this.Hide();
-            Global.controlScreen.Show();
-
+            this.email = emailInput.Text;
+            this.password = passwordInput.Text;
+            bool isCorrect = Global.database.LoginUser(email, password);
+            if (email != "" && password != "" && isCorrect)
+            {
+                this.Hide();
+                Global.controlScreen.Show();
+            }
+            else
+            {
+                MessageBox.Show("Invalid Email or Password, try again");
+            }
         }
 
         private void SignUpButton_Click(object sender, EventArgs e)

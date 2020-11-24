@@ -14,6 +14,8 @@ namespace CS_FinalProject_HL_SZ
         public static Category categoryScreen = new Category();
         public static Authors authorsScreen = new Authors();
         public static Books bookScreen = new Books();
+        public static LendBooks lendBookScreen = new LendBooks();
+        public static ReturnBooks returnBookScreen = new ReturnBooks();
         public static Database database = new Database();
     }
 }

@@ -13,7 +13,7 @@ namespace CS_FinalProject_HL_SZ
 {
     public partial class Books : Form
     {
-        string connString = "Server=tcp:bcitszhl.database.windows.net,1433;Initial Catalog=library;Persist Security Info=False;User ID=Adp001;Password=Admin001;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        private string connString = "Server=tcp:bcitszhl.database.windows.net,1433;Initial Catalog=library;Persist Security Info=False;User ID=Adp001;Password=Admin001;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         private bool mode = false;
         private int id;
         public Books()
@@ -82,7 +82,11 @@ namespace CS_FinalProject_HL_SZ
             string category = CategorySelect.SelectedValue.ToString();
             string author = AuthorSelect.SelectedValue.ToString();
             DateTime publishedDate = DateTime.Parse(dateInput.Text);
-            Global.database.CreateBook(bookTitle, language, category, author, publishedDate);
+            if (mode)
+                Global.database.UpdateBook(bookTitle, language, category, author, publishedDate,id);
+            else
+                Global.database.CreateBook(bookTitle, language, category, author, publishedDate);
+            mode = false;
             this.load();
         }
 
@@ -117,6 +121,10 @@ namespace CS_FinalProject_HL_SZ
             }
         }
 
-        
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Global.controlScreen.Show();
+        }
     }
 }

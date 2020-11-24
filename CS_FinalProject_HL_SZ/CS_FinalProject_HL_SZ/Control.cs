@@ -38,11 +38,13 @@ namespace CS_FinalProject_HL_SZ
         private void LendBooksNavigate_Click(object sender, EventArgs e)
         {
             this.Hide();
+            Global.lendBookScreen.Show();
         }
 
         private void ReturnBooksNavigate_Click(object sender, EventArgs e)
         {
             this.Hide();
+            Global.returnBookScreen.Show();
         }
 
         private void LogoutButton_Click(object sender, EventArgs e)

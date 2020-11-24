@@ -165,6 +165,46 @@ namespace CS_FinalProject_HL_SZ
             }
         }
 
+        public void UpdateBook(string title, string language, string categoryId, string authorId, DateTime date, int id )
+        {
+            try
+            {
+                cnn.Open();
+                string sql = $"UPDATE books SET title = '{title}', language = '{language}' , category_id = '{categoryId}' , author_id = '{authorId}' , published_date = '{date}' WHERE book_id = '{id}'";
+                command = new SqlCommand(sql, cnn);
+                insert.InsertCommand = new SqlCommand(sql, cnn);
+                insert.InsertCommand.ExecuteNonQuery();
+                command.Dispose();
+                cnn.Close();
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine(ex);
+                MessageBox.Show("something went wrong, try again later");
+                cnn.Close();
+            }
+        }
+
+        public void UpdateBookStatus( int status, string id)
+        {
+            try
+            {
+                cnn.Open();
+                string sql = $"UPDATE books SET isBorrowed = '{status}'  WHERE book_id = '{id}'";
+                command = new SqlCommand(sql, cnn);
+                insert.InsertCommand = new SqlCommand(sql, cnn);
+                insert.InsertCommand.ExecuteNonQuery();
+                command.Dispose();
+                cnn.Close();
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine(ex);
+                MessageBox.Show("something went wrong, try again later");
+                cnn.Close();
+            }
+        }
+
         public void RemoveColumnById(string table, string typeID,int id)
         {
             cnn.Open();
